@@ -1,3 +1,8 @@
+0.3.1 - 2023-04-07
+
+Removed:
+- Pre-compiled fio executable for Windows due to security reasons.
+
 0.3.0 - 2023-04-07
 
 Changed:
