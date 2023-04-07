@@ -1,3 +1,8 @@
+0.3.2 - 2023-04-07
+
+Removed:
+- Support MacOS with posixaio instead of libaio engine.
+
 0.3.1 - 2023-04-07
 
 Removed:

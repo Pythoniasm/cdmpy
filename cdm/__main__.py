@@ -5,6 +5,7 @@
 # Original Repo: https://github.com/OliverLew/fio-cdm
 # Packaging: https://github.com/Pythoniasm/cdmpy
 
+import os
 import argparse
 import logging
 
@@ -89,18 +90,29 @@ def entrypoint():
     logging.basicConfig(
         level=logging.DEBUG if args.debug else logging.INFO, format="%(message)s"
     )
-    fio_job = Job(**vars(args))
 
     if args.jobs:
-        for job in args.jobs:
-            rnd_type, qd, tn = job.split(",")
-            fio_job.create_job(rnd_type, int(qd), int(tn))
+        jobs = args.jobs
     else:
-        fio_job.create_job("seq", 8, 1)
-        fio_job.create_job("seq", 1, 1)
-        fio_job.create_job("rnd", 32, 16)
-        fio_job.create_job("rnd", 1, 1)
-    fio_job.run()
+        jobs = [("seq", 8, 1), ("seq", 1, 1), ("rnd", 32, 16), ("rnd", 1, 1)]
+
+    fio_job = Job(**vars(args))
+    for job in jobs:
+        if args.jobs:
+            rnd_type, qd, tn = job.split(",")
+        else:
+            rnd_type, qd, tn = job
+            if os.name == "posix":
+                tn = min(tn, 8)
+
+        fio_job.create_job(rnd_type, int(qd), int(tn))
+
+        if os.name == "posix":
+            fio_job.run()
+            fio_job = Job(**vars(args))
+
+    if os.name != "posix":
+        fio_job.run()
 
 
 if __name__ == "__main__":

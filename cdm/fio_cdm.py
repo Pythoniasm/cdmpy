@@ -48,10 +48,18 @@ class Job:
         self._testfile_name = ".fio_testmark"
         self._blocksize = {"seq": "1m", "rnd": "4k"}
         self._config = configparser.ConfigParser(allow_no_value=True)
+
+        if os.name == "nt":
+            self._ioengine = "windowsaio"
+        elif os.name == "posix":
+            self._ioengine = "posixaio"
+        else:
+            self._ioengine = "libaio"
+
         self._config.read_dict(
             {
                 "global": {
-                    "ioengine": "windowsaio" if os.name == "nt" else "libaio",
+                    "ioengine": self._ioengine,
                     "filename": self._testfile_name,
                     # escape colons, see man page 'filename'
                     "directory": self.target.replace(":", r"\:"),
@@ -164,8 +172,15 @@ class Job:
                 )
             )
 
-        FIO_COMMAND = ["fio", "--output-format", "json", self._jobfile_name]
+        FIO_COMMAND_ARGS = list()
+        if os.name == "posix":  # MacOS
+            FIO_COMMAND_ARGS += ["--ioengine", "posixaio", "--max-jobs=1"]
+
+        FIO_COMMAND_ARGS += ["--output-format", "json"]
+        FIO_COMMAND = ["fio"] + FIO_COMMAND_ARGS + [self._jobfile_name]
+
         try:
+            print(f"$ {' '.join(FIO_COMMAND)}")
             res = Popen(FIO_COMMAND, stdout=PIPE)
             output, _ = res.communicate()
         except KeyboardInterrupt:
