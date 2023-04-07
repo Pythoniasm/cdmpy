@@ -1,7 +1,7 @@
 # Author: Lu Xu <oliver_lew@outlook.com">
 # License: MIT
 # Original Repo: https://github.com/OliverLew/fio-cdm
-# Packaging: https://github.com/Pythoniasm/fio-cdm
+# Packaging: https://github.com/Pythoniasm/pycdm
 
 import platform
 import configparser

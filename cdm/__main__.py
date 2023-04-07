@@ -3,12 +3,12 @@
 # Author: Lu Xu <oliver_lew@outlook.com">
 # License: MIT
 # Original Repo: https://github.com/OliverLew/fio-cdm
-# Packaging: https://github.com/Pythoniasm/fio-cdm
+# Packaging: https://github.com/Pythoniasm/pycdm
 
 import argparse
 import logging
 
-from fio_cdm import Job
+from cdm import Job
 
 
 def get_parser():

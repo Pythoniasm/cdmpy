@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fio-cdm"
+name = "pycdm"
 version = "0.3.0"
 authors = [
     {name = "Lu Xu", email = "oliver_lew@outlook.com"}
@@ -16,7 +16,7 @@ license = {text = "MIT"}
 dependencies = []
 
 [tool.setuptools.package-data]
-"fio_cdm" = ["bin/fio.exe"]
+"cdm" = ["bin/fio.exe"]
 
 [project.scripts]
-fio-cdm = "fio_cdm:entrypoint"
+cdm = "cdm:entrypoint"

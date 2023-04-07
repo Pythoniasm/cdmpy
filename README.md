@@ -1,4 +1,4 @@
-# fio-cdm
+# PyCDM
 
 Python script packaging of [fio-cdm](https://github.com/OliverLew/fio-cdm), a python script to generate [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark/)-style test result with [fio](https://github.com/axboe/fio). Should work across multi platforms.
 
@@ -21,10 +21,10 @@ Install via Python `pip install .`
 
 ## Usage
 
-Call script via `fio-cdm` after pip installation from anywhere.
+Call script via `cdm` after pip installation from anywhere.
 
 ```
-usage: fio-cdm [target] [-h] [-0] [-a job] [-E] [-f jobfile] [-n number] [-s size] [-x [mix]]
+usage: cdm [target] [-h] [-0] [-a job] [-E] [-f jobfile] [-n number] [-s size] [-x [mix]]
 
 positional arguments:
   target      The path of the directory to test. Default to current directory.
@@ -66,15 +66,15 @@ tests: 5, size: 1G, target: . 173.3GiB/405.1GiB
 
 Set test file size to 512MB, 5 test runs with read, write and mix tests:
 
-    fio-cdm -s 512m -n 5 -x
+    cdm -s 512m -n 5 -x
 
 Manually add jobs to replace the default ones:
 
-    fio-cdm -a seq,1,1 -a seq,32,1 -a rnd,16,8
+    cdm -a seq,1,1 -a seq,32,1 -a rnd,16,8
 
 Show the equivalent fio command directly (without running the test):
 
-    fio-cdm -f - | fio --showcmd -
+    cdm -f - | fio --showcmd -
 
 ## Similar projects
 
