@@ -3,8 +3,9 @@
 # Original Repo: https://github.com/OliverLew/fio-cdm
 # Packaging: https://github.com/Pythoniasm/fio-cdm
 
+
 from fio_cdm.fio_cdm import Job
-from fio_cdm.__main__ import get_parser
+from fio_cdm.__main__ import get_parser, entrypoint
 
 
-__all__ = ["Job", "get_parser"]
+__all__ = ["Job", "get_parser", "entrypoint"]

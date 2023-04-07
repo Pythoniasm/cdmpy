@@ -8,7 +8,7 @@
 import argparse
 import logging
 
-from fio_cdm.fio_cdm import Job
+from fio_cdm import Job
 
 
 def get_parser():
@@ -85,11 +85,12 @@ def get_parser():
 def entrypoint():
     parser = get_parser()
     args = parser.parse_args()
+
     logging.basicConfig(
         level=logging.DEBUG if args.debug else logging.INFO, format="%(message)s"
     )
-
     fio_job = Job(**vars(args))
+
     if args.jobs:
         for job in args.jobs:
             rnd_type, qd, tn = job.split(",")

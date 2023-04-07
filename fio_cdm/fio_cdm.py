@@ -13,8 +13,10 @@ import sys
 import tempfile
 
 from subprocess import Popen, PIPE
+from pathlib import Path
 
-from fio_cdm.bin import FIO_BINARY_WINDOWS_PATH
+
+FIO_BINARY_WINDOWS_PATH = Path(__file__).parent.joinpath("bin/fio.exe").resolve()
 
 
 class Job:
