@@ -76,6 +76,27 @@ Show the equivalent fio command directly (without running the test):
 
     cdm -f - | fio --showcmd -
 
+### Trouble Shooting
+
+On MacOS shared memory may be occupied. Find out via `ipcs`, i.e.
+
+```console
+IPC status from <running system> as of Sat Apr  8 00:30:02 CEST 2023
+T     ID     KEY        MODE       OWNER    GROUP
+Message Queues:
+
+T     ID     KEY        MODE       OWNER    GROUP
+Shared Memory:
+m 2818048 0x00000000 --rw-------   thomas    staff
+m 2031617 0x00000000 --rw-------   thomas    staff
+
+T     ID     KEY        MODE       OWNER    GROUP
+Semaphores:
+
+```
+
+Remove with `ipcrm -m 2818048`.
+
 ## Similar projects
 
 **Shell version**: https://github.com/buty4649/fio-cdm

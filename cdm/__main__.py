@@ -107,11 +107,11 @@ def entrypoint():
 
         fio_job.create_job(rnd_type, int(qd), int(tn))
 
-        if os.name == "posix":
+        if os.name == "posix":  # Run jobs one-by-one if on MacOS
             fio_job.run()
             fio_job = Job(**vars(args))
 
-    if os.name != "posix":
+    if os.name != "posix":  # Run all collected jobs at once if not on MacOS
         fio_job.run()
 
 
