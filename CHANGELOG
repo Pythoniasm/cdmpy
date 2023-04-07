@@ -1,4 +1,4 @@
-1.0.0 - 2023-04-07
+0.3.0 - 2023-04-07
 
 Changed:
 - Added Windows fio binary, otherwise use installed version

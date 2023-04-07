@@ -1,7 +1,7 @@
 # Author: Lu Xu <oliver_lew@outlook.com">
 # License: MIT
 # Original Repo: https://github.com/OliverLew/fio-cdm
-# Packaging: https://github.com/Pythoniasm/pycdm
+# Packaging: https://github.com/Pythoniasm/fio-cdm
 
 import platform
 import configparser
@@ -13,7 +13,8 @@ import sys
 import tempfile
 
 from subprocess import Popen, PIPE
-from pathlib import Path
+
+from fio_cdm.bin import FIO_BINARY_WINDOWS_PATH
 
 
 class Job:
@@ -168,7 +169,7 @@ class Job:
 
         system = platform.system()
         if system == "Windows":
-            fio_path = Path(__file__).parent.joinpath("bin/fio.exe").resolve()
+            fio_path = FIO_BINARY_WINDOWS_PATH
         else:
             fio_path = "fio"
 

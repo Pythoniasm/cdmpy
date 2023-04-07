@@ -23,10 +23,17 @@ jobs:
       - name: Install fio, python2 and pip
         run: |
           sudo apt-get install -y fio python3 python3-pip
-      - name: Test python3
+      - name: Install fio-dcm test environment
         run: |
+          pip install --upgrade setuptools pytest
           pip install .
-          cdm -s 1m
+      - name: pytest
+        run: |
+          pytest tests
+      - name: Test script
+        run: |
+          fio-cdm -s 1m
+
   windows2022:
     # The type of runner that the job will run on
     runs-on: windows-latest
@@ -36,7 +43,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Test python3
+      - name: Install fio-dcm test environment
         run: |
+          pip install --upgrade setuptools pytest
           pip install .
-          cdm -s 1m
+      - name: pytest
+        run: |
+          pytest tests
+      - name: Test script
+        run: |
+          fio-cdm -s 1m

@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cdm"
+name = "fio-cdm"
 version = "1.0.0"
 authors = [
     {name = "Lu Xu", email = "oliver_lew@outlook.com"},
@@ -16,5 +16,9 @@ keywords = ["CrystalDiskMark", "disk utilities", "hdd", "ssd"]
 license = {text = "MIT"}
 dependencies = []
 
+
+[tool.setuptools.package-data]
+"fio_cdm.bin" = ["fio.exe"]
+
 [project.scripts]
-cdm = "cdm.__main__:entrypoint"
+fio-cdm = "fio_cdm.__main__:entrypoint"
