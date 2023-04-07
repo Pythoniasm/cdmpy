@@ -1,4 +1,4 @@
-# PyCDM
+# cdmpy
 
 Python script packaging of [fio-cdm](https://github.com/OliverLew/fio-cdm), a python script to generate [CrystalDiskMark](https://crystalmark.info/en/software/crystaldiskmark/)-style test result with [fio](https://github.com/axboe/fio). Should work across multi platforms.
 
