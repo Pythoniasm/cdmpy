@@ -4,8 +4,7 @@
 # Packaging: https://github.com/Pythoniasm/cdmpy
 
 
-from cdm.cdm import Job
-from cdm.__main__ import get_parser, entrypoint
+from cdm.__main__ import Job, get_parser, entrypoint
 
 
-__all__ = ["Job", "get_parser", "entrypoint"]
+__all__ = ["get_parser", "entrypoint", "Job"]

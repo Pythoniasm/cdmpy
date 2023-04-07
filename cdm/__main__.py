@@ -8,7 +8,7 @@
 import argparse
 import logging
 
-from cdm import Job
+from cdm.fio_cdm import Job
 
 
 def get_parser():

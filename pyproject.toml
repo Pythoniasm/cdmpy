@@ -4,19 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cdmpy"
-version = "0.3.0"
+version = "0.3.1"
 authors = [
-    {name = "Lu Xu", email = "oliver_lew@outlook.com"}
+    {name = "Lu Xu", email = "oliver_lew@outlook.com"},
+    {name = "Pyhoniasm", email = "26092465+Pythoniasm@users.noreply.github.com"}
 ]
 description = "A python script to generate CrystalDiskMark-style test result with fio. Should work across multi platforms."
-readme = "README.md"
-requires-python = ">=3.9.13"
 keywords = ["CrystalDiskMark", "disk utilities", "hdd", "ssd"]
 license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.9.13"
 dependencies = []
 
-[tool.setuptools.package-data]
-"cdm" = ["bin/fio.exe"]
+[project.urls]
+repository = 'https://github.com/Pythoniasm/cdmpy'
 
 [project.scripts]
 cdm = "cdm:entrypoint"
